@@ -7,7 +7,6 @@ namespace TeduShop.Model.Models
     public class Footer
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] //similar to set Identity in DB
         [MaxLength(50)]
         public string ID { set; get; }
 
