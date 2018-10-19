@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="myModule">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/spa/app.js"></script>
+</head>
+<body>
+    <div ng-controller="schoolController">
+        <tedu-shop-directive></tedu-shop-directive> <!--Customer in side this directive-->
+        <input type="number" ng-model="num" /> Value of textbox: {{num}}
+        <!--Difined a directive-->
+        <button ng-click="checkNumber()">checkNum</button>
+</div>
+</body>
+</html>

@@ -6,7 +6,8 @@
 
         public TeduShopDbContext Init()
         {
-            return dbContext ?? (dbContext = new TeduShopDbContext());
+            return dbContext ?? (dbContext = new TeduShopDbContext()); //?? operator: return left hand if this operand is not null,
+            //otherwise it returns the right hand operand.
         }
 
         protected override void DisposeCore()
