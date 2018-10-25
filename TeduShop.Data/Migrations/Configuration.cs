@@ -1,10 +1,7 @@
-namespace TeduShop.Data.Migrations
+﻿namespace TeduShop.Data.Migrations
 {
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using Model.Models;
-    using System;
-    using System.Data.Entity;
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
@@ -17,9 +14,10 @@ namespace TeduShop.Data.Migrations
 
         protected override void Seed(TeduShop.Data.TeduShopDbContext context)
         {
+            CreateProdcutCategorySample(context);
             //  This method will be called after migrating to the latest version.
 
-            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new TeduShopDbContext()));
+            /*var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new TeduShopDbContext()));
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new TeduShopDbContext()));
 
@@ -30,7 +28,6 @@ namespace TeduShop.Data.Migrations
                 EmailConfirmed = true,
                 BirthDay = DateTime.Now,
                 FullName = "Technology Education"
-
             };
 
             manager.Create(user, "123654$");
@@ -43,8 +40,23 @@ namespace TeduShop.Data.Migrations
 
             var adminUser = manager.FindByEmail("tedu.international@gmail.com");
 
-            manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+            manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });*/
+        }
 
+        private void CreateProdcutCategorySample(TeduShop.Data.TeduShopDbContext context)
+        {
+            if (context.ProductCategories.Count() == 0)
+            {
+                List<ProductCategory> listProductCategory = new List<ProductCategory>()
+            {
+                new ProductCategory() {Name ="Điện lạnh",Alias="dien-lanh", Status=true },
+                new ProductCategory() {Name ="Viễn Thông",Alias="vien-thong", Status=true },
+                new ProductCategory() {Name ="Đồ Gia Dụng",Alias="d-da-dung", Status=true },
+                new ProductCategory() {Name ="Mỹ Phẩm",Alias="m-p", Status=true },
+            };
+                context.ProductCategories.AddRange(listProductCategory);
+                context.SaveChanges();
+            };
         }
     }
 }
